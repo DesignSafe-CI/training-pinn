@@ -154,8 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/piml.webp" class="logo__image only-light" alt="Physics Informed Machine Learning - Home"/>
-    <script>document.write(`<img src="../_static/piml.webp" class="logo__image only-dark" alt="Physics Informed Machine Learning - Home"/>`);</script>
+    <img src="../_static/nsf_nheri-ds.png" class="logo__image only-light" alt="Physics Informed Machine Learning - Home"/>
+    <script>document.write(`<img src="../_static/nsf_nheri-ds.png" class="logo__image only-dark" alt="Physics Informed Machine Learning - Home"/>`);</script>
   
   
 </a></div>
@@ -527,16 +527,16 @@ Successfully installed pyDOE-0.3.8 scipy-1.14.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary libraries</span>
-<span class="kn">import</span> <span class="nn">torch</span> 
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">pyDOE</span> <span class="kn">import</span> <span class="n">lhs</span>
-<span class="kn">import</span> <span class="nn">time</span> 
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyDOE</span><span class="w"> </span><span class="kn">import</span> <span class="n">lhs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">griddata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 </div>
 </div>
@@ -561,7 +561,7 @@ Successfully installed pyDOE-0.3.8 scipy-1.14.0
 
 <span class="c1"># Define a network for predicting f</span>
 
-<span class="k">def</span> <span class="nf">net_f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">nu</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">net_f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">nu</span><span class="p">):</span>
     <span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">t</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">net_u</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span>
@@ -587,7 +587,7 @@ Successfully installed pyDOE-0.3.8 scipy-1.14.0
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Functions to train and predict</span>
 
-<span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span> <span class="n">X_u_train_t</span><span class="p">,</span> <span class="n">u_train_t</span><span class="p">,</span> <span class="n">X_f_train_t</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">nu</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span> <span class="n">X_u_train_t</span><span class="p">,</span> <span class="n">u_train_t</span><span class="p">,</span> <span class="n">X_f_train_t</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">nu</span><span class="p">):</span>
     <span class="n">x_u</span> <span class="o">=</span> <span class="n">X_u_train_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">t_u</span> <span class="o">=</span> <span class="n">X_u_train_t</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">x_f</span> <span class="o">=</span> <span class="n">X_f_train_t</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
@@ -600,7 +600,7 @@ Successfully installed pyDOE-0.3.8 scipy-1.14.0
     <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> 
     <span class="k">return</span> <span class="n">loss</span>
 
-<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X_star_tf</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">X_star_tf</span><span class="p">):</span>
     <span class="n">x_star</span> <span class="o">=</span> <span class="n">X_star_tf</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">t_star</span> <span class="o">=</span> <span class="n">X_star_tf</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">u_pred</span> <span class="o">=</span> <span class="n">net_u</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x_star</span><span class="p">,</span> <span class="n">t_star</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span>
